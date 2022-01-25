@@ -17,7 +17,7 @@ namespace Dice_Game
             Console.WriteLine("Welcome to the Dice Game! Best out of 10 wins! Good luck!");
 
             //Game Loop
-            for(int i = 0; i < 10; i++)
+            for(int i = 0; (i < 10) ^ (playerScore == 6) ^ (compScore == 6); i++)
             {
                 Console.WriteLine("Press any key to roll the dice!");
 
@@ -46,9 +46,12 @@ namespace Dice_Game
                     Console.WriteLine("It's a draw!");
                 }
 
+                //Round winner
                 Console.WriteLine("Player Score: " + playerScore);
                 Console.WriteLine("Computer Score: "+ compScore);
             }
+
+            //Final game winner
             if(playerScore > compScore)
             {
                 Console.WriteLine("Congratulations, you won the game!");
