@@ -23,13 +23,14 @@ namespace Dice_Game
 
                 Console.ReadKey();
 
-                //Returns a number between 1 and 6
+                //Returns a number between 1 and 6 for player and computer
                 playerDiceNum = random.Next(1,7);
                 Console.WriteLine("You rolled a " + playerDiceNum);
 
                 compDiceNum = random.Next(1,7);
                 Console.WriteLine("Computer AI rolled a " + compDiceNum);
 
+                //Determine the victor
                 if( playerDiceNum > compDiceNum)
                 {
                     playerScore++;
@@ -44,6 +45,9 @@ namespace Dice_Game
                 {
                     Console.WriteLine("It's a draw!");
                 }
+
+                Console.WriteLine("Player Score: " + playerScore);
+                Console.WriteLine("Computer Score: "+ compScore);
             }
         }
     }
