@@ -49,6 +49,18 @@ namespace Dice_Game
                 Console.WriteLine("Player Score: " + playerScore);
                 Console.WriteLine("Computer Score: "+ compScore);
             }
+            if(playerScore > compScore)
+            {
+                Console.WriteLine("Congratulations, you won the game!");
+            }
+            else if(playerScore < compScore)
+            {
+                Console.WriteLine("Better luck next time! Computer won the game.");
+            }
+            else
+            {
+                Console.WriteLine("Wow, the game is tied!");
+            }
         }
     }
 }
