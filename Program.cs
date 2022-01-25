@@ -27,6 +27,14 @@ namespace Dice_Game
                 playerDiceNum = random.Next(1,7);
                 Console.WriteLine("You rolled a " + playerDiceNum);
 
+                //Waiting for suspends 
+                Console.WriteLine("...");
+                System.Threading.Thread.Sleep(300);
+                Console.WriteLine("..");
+                System.Threading.Thread.Sleep(300);
+                Console.WriteLine(".");
+                System.Threading.Thread.Sleep(300);
+
                 compDiceNum = random.Next(1,7);
                 Console.WriteLine("Computer AI rolled a " + compDiceNum);
 
