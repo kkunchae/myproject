@@ -7,6 +7,10 @@ namespace Dice_Game
         static void Main(string[] args)
         {
             int playerDiceNum;
+            int compDiceNum;
+
+            int playerScore = 0;
+            int compScore = 0;
             
             Random random = new Random();
 
@@ -23,9 +27,24 @@ namespace Dice_Game
                 playerDiceNum = random.Next(1,7);
                 Console.WriteLine("You rolled a " + playerDiceNum);
 
-            }
+                compDiceNum = random.Next(1,7);
+                Console.WriteLine("Computer AI rolled a " + compDiceNum);
 
-            
+                if( playerDiceNum > compDiceNum)
+                {
+                    playerScore++;
+                    Console.WriteLine("You win!");
+                }
+                else if(playerDiceNum < compDiceNum)
+                {
+                    compScore++;
+                    Console.WriteLine("The Computer AI wins!");
+                }
+                else
+                {
+                    Console.WriteLine("It's a draw!");
+                }
+            }
         }
     }
 }
