@@ -2,38 +2,41 @@
 using HtmlAgilityPack;
 using System.Collections.Generic;
 
-class WebScraper
+namespace scraper
 {
-
-    static void Main(string[] args)
+    class WebScraper
     {
-        string url = "https://books.toscrape.com/catalogue/category/books/food-and-drink_33/index.html";
-        var links = GetBookLinks(url);
 
-        Console.WriteLine(GetDocument(url).DocumentNode.InnerHtml);
-    }
-
-
-    static List<string> GetBookLinks(string url)
-    {
-        var doc = GetDocument(url);
-        var linkNodes = doc.DocumentNode.SelectNodes("//h3/a");
-
-        var baseUri = new Uri(url);
-        var links = new List<string>();
-        foreach (var node in linkNodes)
+        static void Main(string[] args)
         {
-            var link = node.Attributes["href"].Value;
-            link = new Uri(baseUri, link).AbsolutePath;
-            links.Add(link);
-        }
-        return links;
-    }
+            string url = "https://books.toscrape.com/catalogue/category/books/food-and-drink_33/index.html";
+            var links = GetBookLinks(url);
 
-    static HtmlDocument GetDocument(string url)
-    {
-        var web = new HtmlWeb();
-        HtmlDocument doc = web.Load(url);
-        return doc;
+            Console.WriteLine(GetDocument(url).DocumentNode.InnerHtml);
+        }
+
+        //Retrieves all the books on the page
+        static List<string> GetBookLinks(string url)
+        {
+            var doc = GetDocument(url);
+            var linkNodes = doc.DocumentNode.SelectNodes("//h3/a");
+
+            var baseUri = new Uri(url);
+            var links = new List<string>();
+            foreach (var node in linkNodes)
+            {
+                var link = node.Attributes["href"].Value;
+                link = new Uri(baseUri, link).AbsolutePath;
+                links.Add(link);
+            }
+            return links;
+        }
+        //Grabs the url page we want to parse through
+        static HtmlDocument GetDocument(string url)
+        {
+            var web = new HtmlWeb();
+            HtmlDocument doc = web.Load(url);
+            return doc;
+        }
     }
 }
