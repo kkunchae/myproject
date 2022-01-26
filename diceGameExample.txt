@@ -1,0 +1,56 @@
+Welcome to the Dice Game! Best out of 10 wins! Good luck!
+Press any key to roll the dice!
+You rolled a 3
+...
+..
+.
+Computer AI rolled a 2
+You win!
+Player Score: 1
+Computer Score: 0
+Press any key to roll the dice!
+You rolled a 6
+...
+..
+.
+Computer AI rolled a 3
+You win!
+Player Score: 2
+Computer Score: 0
+Press any key to roll the dice!
+You rolled a 3
+...
+..
+.
+Computer AI rolled a 1
+You win!
+Player Score: 3
+Computer Score: 0
+Press any key to roll the dice!
+You rolled a 6
+...
+..
+.
+Computer AI rolled a 2
+You win!
+Player Score: 4
+Computer Score: 0
+Press any key to roll the dice!
+You rolled a 6
+...
+..
+.
+Computer AI rolled a 3
+You win!
+Player Score: 5
+Computer Score: 0
+Press any key to roll the dice!
+You rolled a 2
+...
+..
+.
+Computer AI rolled a 1
+You win!
+Player Score: 6
+Computer Score: 0
+Congratulations, you won the game!
