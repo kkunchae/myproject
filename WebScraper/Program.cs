@@ -11,8 +11,7 @@ namespace scraper
         {
             string url = "https://books.toscrape.com/catalogue/category/books/food-and-drink_33/index.html";
             var links = GetBookLinks(url);
-            List<Books> books = GetBooks();
-
+            List<Book> books = GetBooks(links);
         }
 
         //Retrieve book information
@@ -43,7 +42,7 @@ namespace scraper
             {
                 var link = node.Attributes["href"].Value;
                 link = new Uri(baseUri, link).AbsolutePath;
-                links.Add(link);
+                links.Add("https://books.toscrape.com" + link);
             }
             return links;
         }
