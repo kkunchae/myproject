@@ -16,10 +16,10 @@ namespace scraper
             Export(books);
         }
 
-        private void Export(List<Book> books)
+        private static void Export(List<Book> books)
         {
             using (var writer = new StreamWriter("./books.csv"))
-            using (var csv = new CsvWriter(writer, CultureInfo.InvariantCulture)
+            using (var csv = new CsvWriter(writer, System.Globalization.CultureInfo.InvariantCulture))
             {
                 csv.WriteRecords(books);
             }
