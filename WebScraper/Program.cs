@@ -1,6 +1,7 @@
 ﻿using System;
 using HtmlAgilityPack;
 using System.Collections.Generic;
+using CsvHelper;
 
 namespace scraper
 {
@@ -12,9 +13,19 @@ namespace scraper
             string url = "https://books.toscrape.com/catalogue/category/books/food-and-drink_33/index.html";
             var links = GetBookLinks(url);
             List<Book> books = GetBooks(links);
+            Export(books);
         }
 
-        //Retrieve book information
+        private void Export(List<Book> books)
+        {
+            using (var writer = new StreamWriter("./books.csv"))
+            using (var csv = new CsvWriter(writer, CultureInfo.InvariantCulture)
+            {
+                csv.WriteRecords(books);
+            }
+        }
+
+        //Retrieve book information and input
         static List<Book> GetBooks(List<string> links)
         {
             var books = new List<Book>();
@@ -25,6 +36,8 @@ namespace scraper
                 book.Title = doc.DocumentNode.SelectSingleNode("//h1").InnerText;
                 var xpath = "//*[@class=\"col-sm-6 product_main\"]/*[@class=\"price_color\"]";
                 book.Price = doc.DocumentNode.SelectSingleNode(xpath).InnerText;
+                xpath = "//*[@class=\"instock availability\"]";
+                book.Avl = doc.DocumentNode.SelectSingleNode(xpath).InnerText.Trim();
                 books.Add(book);
             }
             return books;
@@ -41,8 +54,8 @@ namespace scraper
             foreach (var node in linkNodes)
             {
                 var link = node.Attributes["href"].Value;
-                link = new Uri(baseUri, link).AbsolutePath;
-                links.Add("https://books.toscrape.com" + link);
+                link = new Uri(baseUri, link).AbsoluteUri;
+                links.Add(link);
             }
             return links;
         }
